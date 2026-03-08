@@ -26,4 +26,35 @@
  * @returns {string} "weak", "medium", "strong", or "very strong"
  */
 export function checkPasswordStrength(password) {
+    if(typeof password != "string" || password.length<=0) return "weak";
+    let count=0;
+    let lowerCase = false;
+    let upperCase = false;
+    let number = false;
+    let specialChar = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+    let isSpecialChar = false;
+    
+    
+    
+
+    for(let i =0;i<password.length;i++){
+        const uniChar= password.charCodeAt(i);
+        const char = password[i];        
+        
+        if(uniChar>=97 && uniChar<=122) lowerCase=true;
+        if(uniChar>=65 && uniChar<=90) upperCase=true;
+        if(uniChar>=48 && uniChar<=57) number=true;
+        if( specialChar.includes(char)) isSpecialChar=true;
+
+    }
+     if(password.length>=8) count++;
+    if(lowerCase) count++;
+    if(upperCase) count++;
+    if(number) count++;
+    if(isSpecialChar) count++;
+
+    if(count<=1) return "weak";
+    if(count<=3) return "medium";
+    if(count<=4) return "strong";
+    if(count<=5) return "very strong";
 }

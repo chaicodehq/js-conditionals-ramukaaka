@@ -207,59 +207,118 @@
 //  calculateParkingFee(2, "bus")
 
 //12
-function getSeasonActivity(month, temperature) {
-  if(month <1 || month>12) {
-    console.log("A");
-    return null}
-  let plan ={
-    season:'',
-    activity:''
-  };
-  if(month == (12||1||2) && temperature>0){
-    plan.season='Winter';
-    plan.activity='skiing';
-    console.log(plan);
+// function getSeasonActivity(month, temperature) {
+//   if(month <1 || month>12) {
+//     console.log("A");
+//     return null}
+//   let plan ={
+//     season:'',
+//     activity:''
+//   };
+//   if(month == (12||1||2) && temperature>0){
+//     plan.season='Winter';
+//     plan.activity='skiing';
+//     console.log(plan);
     
-  }
-  else if(month == (12||1||2) && temperature<=0){
-    plan.season='Winter';
-    plan.activity='ice skating';
-    console.log(plan);
-  }
-  if(month == (3||4||5) && temperature>20){
-    plan.season='Spring';
-    plan.activity='hiking';
-        console.log(plan);
+//   }
+//   else if(month == (12||1||2) && temperature<=0){
+//     plan.season='Winter';
+//     plan.activity='ice skating';
+//     console.log(plan);
+//   }
+//   if(month == (3||4||5) && temperature>20){
+//     plan.season='Spring';
+//     plan.activity='hiking';
+//         console.log(plan);
 
-  }
-  else if(month == (3||4||5) && temperature<=20){
-    plan.season='Spring';
-    plan.activity='museum visit';
-        console.log(plan);
+//   }
+//   else if(month == (3||4||5) && temperature<=20){
+//     plan.season='Spring';
+//     plan.activity='museum visit';
+//         console.log(plan);
 
-  }
-  if(month == (6||7||8) && temperature>35){
-    plan.season='Summer';
-    plan.activity='swimming';
-    console.log(plan);
-  }
-  else if(month == (6||7||8) && temperature<=35){
-    plan.season='Summer';
-    plan.activity='cycling';
-    console.log(plan);
-    console.log(plan);
-  }
-  if(month == (9||10||11) && temperature>15){
-    plan.season='Autumn';
-    plan.activity='nature walk';
-  }
-  else if(month == (9||10||11) && temperature<=15){
-    plan.season='Autumn';
-    plan.activity='reading at a cafe';
-        console.log(plan);
+//   }
+//   if(month == (6||7||8) && temperature>35){
+//     plan.season='Summer';
+//     plan.activity='swimming';
+//     console.log(plan);
+//   }
+//   else if(month == (6||7||8) && temperature<=35){
+//     plan.season='Summer';
+//     plan.activity='cycling';
+//     console.log(plan);
+//     console.log(plan);
+//   }
+//   if(month == (9||10||11) && temperature>15){
+//     plan.season='Autumn';
+//     plan.activity='nature walk';
+//   }
+//   else if(month == (9||10||11) && temperature<=15){
+//     plan.season='Autumn';
+//     plan.activity='reading at a cafe';
+//         console.log(plan);
 
-  }
-  return plan;
+//   }
+//   return plan;
+// }
+
+// getSeasonActivity(8, 35)
+
+// const name= {
+//     age : {
+//           a: 10
+//            }
+// }
+
+// const tera ={...name}
+// tera.age.a=6;
+
+
+// console.log(name);
+
+// const order = "ram|sham|dham";
+// let orderlist = order.split("|");
+// console.log("split ",orderlist);
+// console.log(order);
+
+// console.log(typeof("SOS".split(" ")));
+
+function checkPasswordStrength(password) {
+    if(typeof password != "string" || password.length<=0) return "weak";
+    let count=0;
+    let lowerCase = false;
+    let upperCase = false;
+    let number = false;
+    let specialChar = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+    let isSpecialChar = false;
+    
+    
+    
+
+    for(let i =0;i<password.length;i++){
+        const uniChar= password.charCodeAt(i);
+        const char = password[i];        
+        
+        if(uniChar>=97 && uniChar<=122) lowerCase=true;
+        if(uniChar>=65 && uniChar<=90) upperCase=true;
+        if(uniChar>=48 && uniChar<=57) number=true;
+        console.log(char)
+        
+        if(char == specialChar) isSpecialChar=true;
+        
+    }
+     if(password.length>=8) count++;
+    if(lowerCase) count++;
+    if(upperCase) count++;
+    if(number) count++;
+    if(isSpecialChar) count++;
+    
+
+    
+
+    if(count<=1) return "weak";
+    if(count<=3) return "medium";
+    if(count<=4) return "strong";
+    if(count<=5) return "very strong";
 }
-
-getSeasonActivity(8, 35)
+checkPasswordStrength("abcdefg1")
